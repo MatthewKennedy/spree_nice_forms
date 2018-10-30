@@ -1,0 +1,94 @@
+$input-select-height: 3.5em;
+
+.form-group input{
+  box-shadow:none !important;
+  height: $input-select-height;
+  padding: 1em 0 1em 1em;
+}
+
+.form-group select{
+  box-shadow:none !important;
+  height: $input-select-height;
+  padding-top: 0.5em;
+  padding-right: 3em;
+}
+
+@mixin float-label-container {
+  display: block;
+  position: relative;
+}
+
+@mixin float-label {
+  label {
+    font-weight: 100;
+    position: absolute;
+    left: 1.4em;
+    top:  0.2em;
+    pointer-events: none;
+    cursor: text;
+    font-size: 80%;
+    opacity: 1;
+    transition: all 0.2s;
+    @content;
+  }
+}
+
+@mixin float-label-input {
+  &::placeholder {
+    opacity: 1;
+    transition: all 0.2s;
+  }
+
+  &:placeholder-shown:not(:focus)::placeholder {
+    opacity: 0;
+  }
+}
+
+@mixin float-label-scaled {
+  &:placeholder-shown:not(:focus) + * {
+    font-size: 120%;
+    opacity: 0.8;
+    @content;
+  }
+}
+/* Default styling
+ * https://github.com/tonystar/float-label-css/blob/master/scss/float-label.scss
+ */
+.form-group {
+  @include float-label-container;
+  @include float-label;
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  input,
+  select {
+    @include float-label-input;
+    font-size: inherit;
+    width: 100%;
+    @include float-label-scaled {
+      top: 0.5em;
+      left: 0.5em;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: rgba(0,0,0,.5);
+    }
+  }
+}
+
+select {
+  background-position: right center;
+  background: {
+    image: asset-data-url('chevron-down') !important;
+    repeat: no-repeat;
+    position: right 15px center;
+    color: #f9f9f9;
+    size: 15px;
+  }
+
+}
