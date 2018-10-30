@@ -1,4 +1,4 @@
-$input-select-height: 3.5em;
+$input-select-height: 3.4em;
 
 .form-group input{
   box-shadow:none !important;
@@ -11,6 +11,10 @@ $input-select-height: 3.5em;
   height: $input-select-height;
   padding-top: 0.5em;
   padding-right: 3em;
+}
+
+.form-group .btn{
+  height: $input-select-height;
 }
 
 @mixin float-label-container {
@@ -70,8 +74,8 @@ $input-select-height: 3.5em;
     font-size: inherit;
     width: 100%;
     @include float-label-scaled {
-      top: 0.5em;
-      left: 0.5em;
+      top: 0.7em;
+      left: 1em;
     }
 
     &:focus {
